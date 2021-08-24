@@ -75,20 +75,20 @@
                                 <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                                 <select id="status"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option selected>--Choose--</option>
                                     <option>USA</option>
-                                    <option selected>Canada</option>
+                                    <option>Canada</option>
                                     <option>EU</option>
                                 </select>
                             </div>
                         </div>
-
 
                         <div class="col-span-6">
                             <fieldset class="space-y-5">
                                 <div class="relative flex items-start">
                                     <div class="flex items-center h-5">
                                         <input id="comments" aria-describedby="comments-description" name="comments"
-                                               type="checkbox"
+                                               type="checkbox" wire:model="is_referral"
                                                class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                     </div>
                                     <div class="ml-3 text-sm">
@@ -97,6 +97,33 @@
                                 </div>
                             </fieldset>
                         </div>
+
+                        @if($is_referral)
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <label for="referral_contact"
+                                       class="block text-sm font-medium text-gray-700">Referral Contact Number</label>
+                                <input type="text" id="referral_contact"
+                                       autocomplete="off"
+                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <label for="referral_address"
+                                       class="block text-sm font-medium text-gray-700">Referral Address</label>
+                                <input type="text" id="referral_address"
+                                       autocomplete="off"
+                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <label for="referral_details"
+                                       class="block text-sm font-medium text-gray-700">Referral Details</label>
+                                <input type="text" id="referral_details"
+                                       autocomplete="off"
+                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
