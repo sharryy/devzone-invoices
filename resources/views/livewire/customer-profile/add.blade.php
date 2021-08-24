@@ -43,16 +43,16 @@
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="general_email"
-                                   class="block text-sm font-medium text-gray-700">General Email</label>
-                            <input type="email" name="gen_email"
+                            <label for="email"
+                                   class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email"
                                    autocomplete="off"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="accounts_email"
-                                   class="block text-sm font-medium text-gray-700">Accounts Email</label>
-                            <input type="email" name="account_email"
+                            <label for="location"
+                                   class="block text-sm font-medium text-gray-700">Location</label>
+                            <input type="text" name="location"
                                    autocomplete="off"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
@@ -63,48 +63,20 @@
                                    autocomplete="off"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
-                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="phone"
-                                   class="block text-sm font-medium text-gray-700">Phone</label>
-                            <input type="text" name="phone"
-                                   autocomplete="off"
-                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="primary_contact_number"
-                                   class="block text-sm font-medium text-gray-700">Primary Contact Number</label>
-                            <input type="text" autocomplete="off"
-                                   name="pri_contact_number"
-                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="secondary_contact_number"
-                                   class="block text-sm font-medium text-gray-700">Secondary Contact Number</label>
-                            <input type="text"
-                                   autocomplete="off"
-                                   name="sec_contact_number"
-                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="post_code"
-                                   class="block text-sm font-medium text-gray-700">Post Code</label>
-                            <input type="text" autocomplete="off"
-                                   name="code"
-                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div class="col-span-6 sm:col-span-6 lg:col-span-6">
-                            <label for="address1"
-                                   class="block text-sm font-medium text-gray-700">Address 1</label>
-                            <input type="text" autocomplete="off"
-                                   name="address_1"
-                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div class="col-span-6 sm:col-span-6 lg:col-span-6">
-                            <label for="address2"
-                                   class="block text-sm font-medium text-gray-700">Address 2</label>
-                            <input type="text" autocomplete="off"
-                                   name="address_2"
-                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+                        <div class="col-span-6">
+                            <fieldset class="space-y-5">
+                                <div class="relative flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input id="comments" aria-describedby="comments-description" name="comments"
+                                               type="checkbox"
+                                               class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="comments" class="font-medium text-gray-700">Add Referrals</label>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
