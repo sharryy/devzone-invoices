@@ -21,7 +21,7 @@
         Dashboard
     </a>
 
-    <div @if(Request::segment(1)=='master-data') x-data="{ isExpanded: true }" @else x-data="{ isExpanded: false }"
+    <div @if(Request::segment(1)=='customer-profile') x-data="{ isExpanded: true }" @else x-data="{ isExpanded: false }"
          @endif x-cloak
          class="space-y-1">
         <button
@@ -47,13 +47,11 @@
         </button>
         <div x-show="isExpanded" x-description="Expandable link section, show/hide based on state." class="space-y-1"
              style="display: none;">
-            <a href="#"
-               class="{{ (Request::segment(1)=='master-data' && Request::segment(2)=='suppliers') ? $a_current : $a_default }} group rounded-md pr-2 pl-11 pl-3 py-2 flex items-center text-sm font-normal"
+            <a href="{{ route('customer-profile.add') }}"
+               class="{{ (Request::segment(1)=='customer-profile') ? $a_current : $a_default }} group rounded-md pr-2 pl-11 pl-3 py-2 flex items-center text-sm font-normal"
             >
                 Add Client Profile
             </a>
         </div>
-
-
     </div>
 </nav>
