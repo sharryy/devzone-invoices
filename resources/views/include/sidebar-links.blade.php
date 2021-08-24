@@ -42,7 +42,7 @@
         </button>
         <div x-show="isExpanded" x-description="Expandable link section, show/hide based on state." class="space-y-1"
              style="display: none;">
-            <a href="{{ route('customer-profile.add') }}"
+            <a href="{{ route('customer-profile.index') }}"
                class="{{ (Request::segment(1)=='customer-profile') ? $a_current : $a_default }} group rounded-md pr-2 pl-11 pl-3 py-2 flex items-center text-sm font-normal"
             >
                 Add Client Profile

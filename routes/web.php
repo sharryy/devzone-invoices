@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/customer-profile', function () {
+Route::get('/customer-profile/add', function () {
     return view('customer-profile.add');
 })->name('customer-profile.add');
+
+Route::get('/customer-profile', function () {
+    return view('customer-profile.index');
+})->name('customer-profile.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
