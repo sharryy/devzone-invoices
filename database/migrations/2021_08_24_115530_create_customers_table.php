@@ -18,9 +18,10 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('company');
             $table->string('contact');
+            $table->string('email');
             $table->string('address');
             $table->string('location');
-            $table->boolean('is_referred')->default(false);
+            $table->char('is_referred', 2)->nullable();
             $table->string('referral_contact')->nullable();
             $table->string('referral_details')->nullable();
             $table->string('referral_address')->nullable();
