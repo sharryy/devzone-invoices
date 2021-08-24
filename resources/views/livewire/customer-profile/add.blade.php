@@ -59,26 +59,26 @@
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                             <label for="address"
                                    class="block text-sm font-medium text-gray-700">Address Line</label>
-                            <input type="email" id="address"
+                            <input type="text" id="address"
                                    autocomplete="off" wire:model.defer="customer.address"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                             <label for="remarks"
                                    class="block text-sm font-medium text-gray-700">Remarks</label>
-                            <input type="email" id="remarks"
+                            <input type="text" id="remarks"
                                    autocomplete="off" wire:model.defer="customer.remarks"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                             <div>
-                                <label for="Location" class="block text-sm font-medium text-gray-700">Location</label>
-                                <select id="Location" wire:model.defer="customer.location"
+                                <label for="Location" class="block text-sm font-medium text-gray-700">Status</label>
+                                <select id="Location" wire:model.defer="customer.current_status"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option selected>--Choose--</option>
-                                    <option>USA</option>
-                                    <option>Canada</option>
-                                    <option>EU</option>
+                                    <option>Talk in Process</option>
+                                    <option>On-board</option>
+                                    <option>Dropped</option>
                                 </select>
                             </div>
                         </div>
