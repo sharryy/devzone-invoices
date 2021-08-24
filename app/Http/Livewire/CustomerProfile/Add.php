@@ -32,11 +32,11 @@ class Add extends Component
     protected $rules = [
         'customer.name' => 'required|string',
         'customer.company' => 'required|string',
-        'customer.contact' => 'required|integer',
+        'customer.contact' => 'required|numeric|size:11',
         'customer.email' => 'nullable|email',
         'customer.address' => 'nullable|string',
         'customer.location' => 'nullable',
-        'customer.referral_contact' => 'nullable|integer',
+        'customer.referral_contact' => 'nullable|numeric|size:11',
         'customer.referral_details' => 'nullable',
         'customer.referral_address' => 'nullable|alpha_num',
         'customer.remarks' => 'nullable',
