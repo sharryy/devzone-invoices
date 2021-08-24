@@ -32,6 +32,19 @@
                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
+                            <div class="col-span-8 sm:col-span-2 lg:col-span-2">
+                                <div>
+                                    <label for="Location" class="block text-sm font-medium text-gray-700">Status</label>
+                                    <select id="Location" wire:model.defer="customer.current_status"
+                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <option selected>--Choose--</option>
+                                        <option>Talk in Process</option>
+                                        <option>On-board</option>
+                                        <option>Dropped</option>
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="col-span-8 sm:col-span-2">
                                 <button type="submit"
@@ -56,7 +69,7 @@
                     <div class="bg-white py-6 px-4 space-y-6 sm:p-6  rounded-t-md">
                         <div class="flex items-center justify-between">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">Customers</h3>
-                            <a href="#"
+                            <a href="{{ route('customer-profile.add') }}"
                                class="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
                                 Add Customer
                             </a>
@@ -68,20 +81,19 @@
                             <th scope="col" class="px-3 py-3 text-left text-sm font-medium text-gray-500   ">
                                 #
                             </th>
-
-                            <th wire:click="sortBy('s.business_name')" scope="col"
+                            <th scope="col"
+                                class="px-3 py-3 cursor-pointer text-left text-sm font-medium text-gray-500">
+                                Name
+                            </th>
+                            <th scope="col"
                                 class="px-3 py-3 cursor-pointer text-left text-sm font-medium text-gray-500">
                                 Business Name
                             </th>
-                            <th wire:click="sortBy('s.primary_contact_name')" scope="col"
-                                class="px-3 py-3 cursor-pointer text-left text-sm font-medium text-gray-500">
-                                Contact Name
+                            <th scope="col" class="px-3 py-3 text-left text-sm font-medium text-gray-500   ">
+                                Location
                             </th>
                             <th scope="col" class="px-3 py-3 text-left text-sm font-medium text-gray-500   ">
                                 Email
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-left text-sm font-medium text-gray-500   ">
-                                Phone
                             </th>
                             <th scope="col" class="px-3 py-3 text-left text-sm font-medium text-gray-500 content  ">
                                 Action
