@@ -27,11 +27,6 @@
         <button
             class="group w-full flex items-center pl-2 pr-1 py-2 text-sm font-medium rounded-md bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             @click.prevent="isExpanded = !isExpanded" x-bind:aria-expanded="isExpanded">
-            {{--            <svg class="text-gray-400 group-hover:text-gray-500 mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"--}}
-            {{--                 xmlns="http://www.w3.org/2000/svg">--}}
-            {{--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
-            {{--                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>--}}
-            {{--            </svg>--}}
             <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-500 mr-3 w-6 h-6"
                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
