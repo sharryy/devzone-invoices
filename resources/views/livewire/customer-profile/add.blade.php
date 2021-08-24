@@ -52,17 +52,36 @@
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                             <label for="location"
                                    class="block text-sm font-medium text-gray-700">Location</label>
-                            <input type="text" name="location"
+                            <input type="text" id="location"
                                    autocomplete="off"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
-                            <label for="sales_email"
-                                   class="block text-sm font-medium text-gray-700">Sales Email</label>
-                            <input type="email" name="sale_email"
+                            <label for="address"
+                                   class="block text-sm font-medium text-gray-700">Address Line</label>
+                            <input type="email" id="address"
                                    autocomplete="off"
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
+                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                            <label for="remarks"
+                                   class="block text-sm font-medium text-gray-700">Remarks</label>
+                            <input type="email" id="remarks"
+                                   autocomplete="off"
+                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                            <div>
+                                <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                                <select id="status"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option>USA</option>
+                                    <option selected>Canada</option>
+                                    <option>EU</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="col-span-6">
                             <fieldset class="space-y-5">
@@ -73,7 +92,7 @@
                                                class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                     </div>
                                     <div class="ml-3 text-sm">
-                                        <label for="comments" class="font-medium text-gray-700">Add Referrals</label>
+                                        <label for="comments" class="font-medium text-gray-700">Add Referral</label>
                                     </div>
                                 </div>
                             </fieldset>
