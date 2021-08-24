@@ -15,6 +15,18 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('company');
+            $table->string('contact');
+            $table->string('address');
+            $table->string('location');
+            $table->boolean('is_referred')->default(false);
+            $table->string('referral_contact')->nullable();
+            $table->string('referral_details')->nullable();
+            $table->string('referral_address')->nullable();
+            $table->text('remarks')->nullable();
+            $table->string('current_status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
