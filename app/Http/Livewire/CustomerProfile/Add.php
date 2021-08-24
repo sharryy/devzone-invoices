@@ -6,10 +6,17 @@ use Livewire\Component;
 
 class Add extends Component
 {
-    public $is_referral;
+    public $customer = [
+        'is_referred' => false
+    ];
 
     public function render()
     {
         return view('livewire.customer-profile.add');
+    }
+
+    public function save()
+    {
+
     }
 }
