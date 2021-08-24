@@ -38,23 +38,6 @@
                 </span>
                         </button>
                     </div>
-                    <div x-show="open" x-description="Dropdown panel, show/hide based on dropdown state."
-                         x-transition:enter="transition ease-out duration-100"
-                         x-transition:enter-start="transform opacity-0 scale-95"
-                         x-transition:enter-end="transform opacity-100 scale-100"
-                         x-transition:leave="transition ease-in duration-75"
-                         x-transition:leave-start="transform opacity-100 scale-100"
-                         x-transition:leave-end="transform opacity-0 scale-95"
-                         class="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200"
-                         role="menu" aria-orientation="vertical" aria-labelledby="options-menu" style="display: none;">
-{{--                        @foreach(config('app.profile') as $list)--}}
-
-{{--                            <a href="{{url($list['url'])}}"--}}
-{{--                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"--}}
-{{--                               role="menuitem">{{ $list['name'] }}</a>--}}
-
-{{--                        @endforeach--}}
-                    </div>
                 </div>
                 @include('include.sidebar-links')
             </div>
