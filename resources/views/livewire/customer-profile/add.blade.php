@@ -101,6 +101,15 @@
                         </div>
 
                         @if($customer['is_referred'])
+
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <label for="referral_name"
+                                       class="block text-sm font-medium text-gray-700">Referral Name</label>
+                                <input type="text" id="referral_name"
+                                       autocomplete="off" wire:model.defer="customer.referral_name"
+                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
                             <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                                 <label for="referral_contact"
                                        class="block text-sm font-medium text-gray-700">Referral Contact Number</label>
