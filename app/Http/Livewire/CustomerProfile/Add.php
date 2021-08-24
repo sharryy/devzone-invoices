@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\CustomerProfile;
 
+use App\Models\Customer;
 use Livewire\Component;
 
 class Add extends Component
@@ -48,6 +49,8 @@ class Add extends Component
     public function save()
     {
         $this->validate();
-        dd($this->customer);
+        $response = Customer::create($this->customer);
+        !$response ? session()->flash('error', 'Unknown Error Occurred! Customer not added.') : session()->flash('success', 'Customer Added Successfully.');
+        $this->reset('customer');
     }
 }
