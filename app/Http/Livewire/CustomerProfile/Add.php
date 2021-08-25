@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Add extends Component
 {
-    public $toggle_switch;
+    public $toggle_switch = false;
 
     public $customer = [
         'is_referred' => false,
@@ -72,11 +72,25 @@ class Add extends Component
 
     public function save()
     {
-        $this->customer['is_every_month'] = $this->toggle_switch;
+        if ($this->customer['is_referred']) $this->customer['is_every_month'] = $this->toggle_switch;
         $this->validate();
+        if ($this->customer['is_every_month'] == true && $this->customer['is_referred']) $this->customer['rec_mrc_duration'] = '';
+        dd($this->customer);
         $response = Customer::create($this->customer);
         !$response ? session()->flash('error', 'Unknown Error Occurred! Customer not added.') : session()->flash('success', 'Customer Added Successfully.');
         $this->reset('customer');
     }
 
+    public function updatedCustomerIsReferred($value)
+    {
+        if (!$value) {
+            if ($this->customer['commission_type'] == 'one-time') {
+                unset($this->customer['one_time_commission_percentage'], $this->customer['referral_name'], $this->customer['referral_contact'], $this->customer['referral_details'],
+                    $this->customer['referral_address'], $this->customer['commission_type']);
+            } elseif ($this->customer['commission_type'] == 'recurring') {
+                unset($this->customer['rec_otc_percentage'], $this->customer['rec_mrc_percentage'], $this->customer['rec_mrc_duration'], $this->customer['referral_name'], $this->customer['referral_contact'], $this->customer['referral_details'],
+                    $this->customer['referral_address'], $this->customer['commission_type']);
+            }
+        }
+    }
 }

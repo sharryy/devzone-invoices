@@ -82,7 +82,7 @@
                                 <label for="Location" class="block text-sm font-medium text-gray-700">Status</label>
                                 <select id="Location" wire:model.lazy="customer.current_status"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                    <option>--Choose--</option>
+                                    <option></option>
                                     <option value="in-process">Talk in Process</option>
                                     <option value="on-board">On-board</option>
                                     <option value="dropped">Dropped</option>
@@ -197,7 +197,7 @@
                                         Type</label>
                                     <select id="type" wire:model.lazy="customer.commission_type"
                                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                        <option selected>--Choose--</option>
+                                        <option></option>
                                         <option value="one-time">One Time Payment</option>
                                         <option value="recurring">Recurring</option>
                                     </select>
