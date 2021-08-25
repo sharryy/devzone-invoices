@@ -8,7 +8,9 @@ use Livewire\Component;
 class Add extends Component
 {
     public $customer = [
-        'is_referred' => false
+        'is_referred' => false,
+        'current_status' => '',
+        'commission_type' => ''
     ];
 
     public function render()
@@ -49,6 +51,7 @@ class Add extends Component
     public function save()
     {
         $this->validate();
+        dd($this->customer);
         $response = Customer::create($this->customer);
         !$response ? session()->flash('error', 'Unknown Error Occurred! Customer not added.') : session()->flash('success', 'Customer Added Successfully.');
         $this->reset('customer');

@@ -73,15 +73,25 @@
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                             <div>
                                 <label for="Location" class="block text-sm font-medium text-gray-700">Status</label>
-                                <select id="Location" wire:model.defer="customer.current_status"
+                                <select id="Location" wire:model.lazy="customer.current_status"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option selected>--Choose--</option>
-                                    <option>Talk in Process</option>
-                                    <option>On-board</option>
-                                    <option>Dropped</option>
+                                    <option value="in-process">Talk in Process</option>
+                                    <option value="on-board">On-board</option>
+                                    <option value="dropped">Dropped</option>
                                 </select>
                             </div>
                         </div>
+
+                        @if($customer['current_status'] == 'dropped')
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <label for="reason"
+                                       class="block text-sm font-medium text-gray-700">Reason for Dropping</label>
+                                <input type="text" id="reason"
+                                       autocomplete="off" wire:model.defer="customer.status_reason"
+                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        @endif
 
                         <div class="col-span-6">
                             <fieldset class="space-y-5">
@@ -133,6 +143,69 @@
                                        autocomplete="off" wire:model.defer="customer.referral_details"
                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
+
+
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <div>
+                                    <label for="type" class="block text-sm font-medium text-gray-700">Commission
+                                        Type</label>
+                                    <select id="type" wire:model.lazy="customer.commission_type"
+                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <option selected>--Choose--</option>
+                                        <option value="one-time">One Time Payment</option>
+                                        <option value="recurring">Recurring</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            @if($customer['commission_type'] == 'one-time')
+                                <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                    <label for="one-time-cent"
+                                           class="block text-sm font-medium text-gray-700">Commission Percentage</label>
+                                    <input type="text" id="one-time-cent"
+                                           autocomplete="off" wire:model.defer="customer.one_time_commission_percentage"
+                                           class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+                            @elseif($customer['commission_type'] == 'recurring')
+                                <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                    <label for="otc-cent"
+                                           class="block text-sm font-medium text-gray-700">OTC Percentage</label>
+                                    <input type="text" id="otc-cent"
+                                           autocomplete="off" wire:model.defer="customer.rec_otc_percentage"
+                                           class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+                                <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                    <label for="mrc-cent"
+                                           class="block text-sm font-medium text-gray-700">MRC Percentage</label>
+                                    <input type="text" id="mrc-cent"
+                                           autocomplete="off" wire:model.defer="customer.rec_mrc_percentage"
+                                           class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+
+
+                                <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                    <label for="mrc_duration" class="block text-sm font-medium text-gray-700">MRC
+                                        Duration</label>
+                                    <div class="mt-1 relative rounded-md shadow-sm ">
+                                        <input type="text" id="mrc_duration"
+                                               class="focus:ring-indigo-500 focus:border-indigo-500 block w-full  pr-12 sm:text-sm border-gray-300 rounded-md"
+                                               placeholder="">
+                                        <div class="absolute inset-y-0 right-0 flex items-center">
+                                            <label for="mrc_type" class="sr-only">Type</label>
+                                            <select id="mrc_type"
+                                                    class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
+                                                <option value="day">Day</option>
+                                                <option value="week">Week</option>
+                                                <option value="month">Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            @endif
+
+
                         @endif
 
                     </div>
