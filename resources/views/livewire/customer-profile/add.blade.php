@@ -94,24 +94,54 @@
                         @endif
 
                         <div class="col-span-6">
-                            <fieldset class="space-y-5">
-                                <div class="relative flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input id="referral" aria-describedby="comments-description" name="comments"
-                                               type="checkbox" wire:model="customer.is_referred"
-                                               class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="referral" class="font-medium text-gray-700">Add Referral</label>
-                                        <p id="comments-description" class="text-gray-500">Get to know about how your
-                                            business grows.</p>
-                                    </div>
+                            <div class="flex justify-between">
+                                <div>
+                                    <fieldset class="space-y-5">
+                                        <div class="relative flex items-start">
+                                            <div class="flex items-center h-5">
+                                                <input id="referral" aria-describedby="comments-description"
+                                                       name="comments"
+                                                       type="checkbox" wire:model="customer.is_referred"
+                                                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                            </div>
+                                            <div class="ml-3 text-sm">
+                                                <label for="referral" class="font-medium text-gray-700">Add
+                                                    Referral</label>
+                                                <p id="comments-description" class="text-gray-500">Get to know about how
+                                                    your
+                                                    business grows.</p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </fieldset>
+
+                                @if($customer['commission_type'] == 'recurring')
+                                    <div class="flex items-center" x-data="{ on: @entangle('toggle_switch') }">
+                                        <button type="button"
+                                                class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                role="switch" aria-checked="false" x-ref="switch" x-state:on="Enabled"
+                                                x-state:off="Not Enabled"
+                                                :class="{ 'bg-indigo-600': on, 'bg-gray-200': !(on) }"
+                                                aria-labelledby="annual-billing-label" :aria-checked="on.toString()"
+                                                @click="on = !on">
+                                        <span aria-hidden="true"
+                                              class="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                                              x-state:on="Enabled" x-state:off="Not Enabled"
+                                              :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
+                                        </button>
+                                        <span class="ml-3" id="annual-billing-label"
+                                              @click="on = !on; $refs.switch.focus()">
+                                  <span class="text-sm font-medium text-gray-900">Every Month </span>
+                                </span>
+
+                                    </div>
+                                @endif
+                            </div>
+
+
                         </div>
 
                         @if($customer['is_referred'])
-
                             <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                                 <label for="referral_name"
                                        class="block text-sm font-medium text-gray-700">Referral Name</label>
@@ -183,23 +213,20 @@
                                 </div>
 
 
-                                <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <label for="mrc_duration" class="block text-sm font-medium text-gray-700">MRC
-                                        Duration (Months)</label>
-                                    <div class="mt-1 relative rounded-md shadow-sm ">
-                                        <input type="number" id="mrc_duration"
-                                               wire:model.defer="customer.rec_mrc_duration"
-                                               class="focus:ring-indigo-500 focus:border-indigo-500 block w-full  pr-12 sm:text-sm border-gray-300 rounded-md"
-                                               autocomplete="off">
+                                @if(!$toggle_switch)
+                                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                        <label for="mrc_duration" class="block text-sm font-medium text-gray-700">MRC
+                                            Duration (Months)</label>
+                                        <div class="mt-1 relative rounded-md shadow-sm ">
+                                            <input type="number" id="mrc_duration"
+                                                   wire:model.defer="customer.rec_mrc_duration"
+                                                   class="focus:ring-indigo-500 focus:border-indigo-500 block w-full  pr-12 sm:text-sm border-gray-300 rounded-md"
+                                                   autocomplete="off">
+                                        </div>
                                     </div>
-                                </div>
-
-
+                                @endif
                             @endif
-
-
                         @endif
-
                     </div>
                 </div>
             </div>
