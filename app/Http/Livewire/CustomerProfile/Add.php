@@ -12,9 +12,17 @@ class Add extends Component
     public $customer = [
         'is_referred' => false,
         'current_status' => '',
-        'commission_type' => '',
     ];
 
+    public $customer_referral = [
+        'commission_type' => ''
+    ];
+
+    public $referral_array = [
+        'referral_name', 'referral_contact', 'referral_details', 'referral_address',
+        'commission_type', 'rec_otc_percentage', 'rec_mrc_percentage', 'rec_mrc_duration',
+        'one_time_commission_percentage'
+    ];
 
     public function render()
     {
@@ -34,16 +42,16 @@ class Add extends Component
         'customer.is_referred' => 'Referral',
         'customer.ending_date' => 'Ending Date',
         'customer.status_reason' => 'Reason',
-        'customer.commission_type' => 'Commission Type',
-        'customer.one_time_commission_percentage' => 'Commission Percentage',
-        'customer.is_every_month' => 'Recurring Payment',
-        'customer.rec_otc_percentage' => 'OTC Percentage',
-        'customer.rec_mrc_percentage' => 'MRC Percentage',
-        'customer.rec_mrc_duration' => 'MRC Duration',
-        'customer.referral_name' => 'Referral Name',
-        'customer.referral_contact' => 'Referral Contact',
-        'customer.referral_details' => 'Referral Details',
-        'customer.referral_address' => 'Referral Address',
+        'customer_referral.commission_type' => 'Commission Type',
+        'customer_referral.one_time_commission_percentage' => 'Commission Percentage',
+        'customer_referral.is_every_month' => 'Recurring Payment',
+        'customer_referral.rec_otc_percentage' => 'OTC Percentage',
+        'customer_referral.rec_mrc_percentage' => 'MRC Percentage',
+        'customer_referral.rec_mrc_duration' => 'MRC Duration',
+        'customer_referral.referral_name' => 'Referral Name',
+        'customer_referral.referral_contact' => 'Referral Contact',
+        'customer_referral.referral_details' => 'Referral Details',
+        'customer_referral.referral_address' => 'Referral Address',
     ];
 
     protected $rules = [
@@ -59,15 +67,15 @@ class Add extends Component
         'customer.is_referred' => 'nullable',
         'customer.ending_date' => 'date|required_if:customer.current_status,dropped',
         'customer.status_reason' => 'string',
-        'customer.commission_type' => 'required_if:customer.is_referred,true',
-        'customer.one_time_commission_percentage' => 'required_if:customer.commission_type,one-time',
-        'customer.is_every_month' => 'nullable',
-        'customer.rec_otc_percentage' => 'required_if:customer.commission_type,recurring',
-        'customer.rec_mrc_percentage' => 'required_if:customer.commission_type,recurring',
-        'customer.referral_name' => 'nullable',
-        'customer.referral_contact' => 'nullable|numeric',
-        'customer.referral_details' => 'nullable',
-        'customer.referral_address' => 'nullable',
+        'customer_referral.commission_type' => 'required_if:customer.is_referred,true',
+        'customer_referral.one_time_commission_percentage' => 'required_if:customer_referral.commission_type,one-time',
+        'customer_referral.is_every_month' => 'nullable',
+        'customer_referral.rec_otc_percentage' => 'required_if:customer_referral.commission_type,recurring',
+        'customer_referral.rec_mrc_percentage' => 'required_if:customer_referral.commission_type,recurring',
+        'customer_referral.referral_name' => 'nullable',
+        'customer_referral.referral_contact' => 'nullable|numeric',
+        'customer_referral.referral_details' => 'nullable',
+        'customer_referral.referral_address' => 'nullable',
     ];
 
     public function save()
@@ -75,7 +83,6 @@ class Add extends Component
         if ($this->customer['is_referred']) $this->customer['is_every_month'] = $this->toggle_switch;
         $this->validate();
         if ($this->customer['is_every_month'] == true && $this->customer['is_referred']) $this->customer['rec_mrc_duration'] = '';
-        dd($this->customer);
         $response = Customer::create($this->customer);
         !$response ? session()->flash('error', 'Unknown Error Occurred! Customer not added.') : session()->flash('success', 'Customer Added Successfully.');
         $this->reset('customer');
@@ -83,14 +90,7 @@ class Add extends Component
 
     public function updatedCustomerIsReferred($value)
     {
-        if (!$value) {
-            if ($this->customer['commission_type'] == 'one-time') {
-                unset($this->customer['one_time_commission_percentage'], $this->customer['referral_name'], $this->customer['referral_contact'], $this->customer['referral_details'],
-                    $this->customer['referral_address'], $this->customer['commission_type']);
-            } elseif ($this->customer['commission_type'] == 'recurring') {
-                unset($this->customer['rec_otc_percentage'], $this->customer['rec_mrc_percentage'], $this->customer['rec_mrc_duration'], $this->customer['referral_name'], $this->customer['referral_contact'], $this->customer['referral_details'],
-                    $this->customer['referral_address'], $this->customer['commission_type']);
-            }
-        }
+        if (!$value)
+            $this->reset('customer_referral');
     }
 }

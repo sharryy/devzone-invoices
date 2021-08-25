@@ -130,7 +130,7 @@
                                     </fieldset>
                                 </div>
 
-                                @if($customer['commission_type'] == 'recurring' && $customer['is_referred'])
+                                @if($customer_referral['commission_type'] == 'recurring' && $customer['is_referred'])
                                     <div class="flex items-center" x-data="{ on: @entangle('toggle_switch') }">
                                         <button type="button"
                                                 class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -162,7 +162,7 @@
                                 <label for="referral_name"
                                        class="block text-sm font-medium text-gray-700">Referral Name</label>
                                 <input type="text" id="referral_name"
-                                       autocomplete="off" wire:model.defer="customer.referral_name"
+                                       autocomplete="off" wire:model.defer="customer_referral.referral_name"
                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
@@ -170,7 +170,7 @@
                                 <label for="referral_contact"
                                        class="block text-sm font-medium text-gray-700">Referral Contact Number</label>
                                 <input type="text" id="referral_contact"
-                                       autocomplete="off" wire:model.defer="customer.referral_contact"
+                                       autocomplete="off" wire:model.defer="customer_referral.referral_contact"
                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
@@ -178,7 +178,7 @@
                                 <label for="referral_address"
                                        class="block text-sm font-medium text-gray-700">Referral Address</label>
                                 <input type="text" id="referral_address"
-                                       autocomplete="off" wire:model.defer="customer.referral_address"
+                                       autocomplete="off" wire:model.defer="customer_referral.referral_address"
                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
@@ -186,7 +186,7 @@
                                 <label for="referral_details"
                                        class="block text-sm font-medium text-gray-700">Referral Details</label>
                                 <input type="text" id="referral_details"
-                                       autocomplete="off" wire:model.defer="customer.referral_details"
+                                       autocomplete="off" wire:model.defer="customer_referral.referral_details"
                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
@@ -195,7 +195,7 @@
                                 <div>
                                     <label for="type" class="block text-sm font-medium text-gray-700">Commission
                                         Type</label>
-                                    <select id="type" wire:model.lazy="customer.commission_type"
+                                    <select id="type" wire:model.lazy="customer_referral.commission_type"
                                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                         <option></option>
                                         <option value="one-time">One Time Payment</option>
@@ -204,27 +204,28 @@
                                 </div>
                             </div>
 
-                            @if($customer['commission_type'] == 'one-time')
+                            @if($customer_referral['commission_type'] == 'one-time')
                                 <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                                     <label for="one-time-cent"
                                            class="block text-sm font-medium text-gray-700">Commission Percentage</label>
                                     <input type="text" id="one-time-cent"
-                                           autocomplete="off" wire:model.defer="customer.one_time_commission_percentage"
+                                           autocomplete="off"
+                                           wire:model.defer="customer_referral.one_time_commission_percentage"
                                            class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
-                            @elseif($customer['commission_type'] == 'recurring')
+                            @elseif($customer_referral['commission_type'] == 'recurring')
                                 <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                                     <label for="otc-cent"
                                            class="block text-sm font-medium text-gray-700">OTC Percentage</label>
                                     <input type="text" id="otc-cent"
-                                           autocomplete="off" wire:model.defer="customer.rec_otc_percentage"
+                                           autocomplete="off" wire:model.defer="customer_referral.rec_otc_percentage"
                                            class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
                                 <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                                     <label for="mrc-cent"
                                            class="block text-sm font-medium text-gray-700">MRC Percentage</label>
                                     <input type="text" id="mrc-cent"
-                                           autocomplete="off" wire:model.defer="customer.rec_mrc_percentage"
+                                           autocomplete="off" wire:model.defer="customer_referral.rec_mrc_percentage"
                                            class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
 
@@ -235,7 +236,7 @@
                                             Duration (Months)</label>
                                         <div class="mt-1 relative rounded-md shadow-sm ">
                                             <input type="number" id="mrc_duration"
-                                                   wire:model.defer="customer.rec_mrc_duration"
+                                                   wire:model.defer="customer_referral.rec_mrc_duration"
                                                    class="focus:ring-indigo-500 focus:border-indigo-500 block w-full  pr-12 sm:text-sm border-gray-300 rounded-md"
                                                    autocomplete="off">
                                         </div>
