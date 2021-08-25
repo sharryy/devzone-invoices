@@ -132,7 +132,7 @@
 
                                 @if($customer['commission_type'] == 'recurring' && $customer['is_referred'])
                                     <div class="flex items-center" x-data="{ on: @entangle('toggle_switch') }">
-                                        <button type="button"
+                                        <button type="button" wire:model.lazy="customer.is_every_month"
                                                 class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                 role="switch" aria-checked="false" x-ref="switch" x-state:on="Enabled"
                                                 x-state:off="Not Enabled"
@@ -146,9 +146,10 @@
                                         </button>
                                         <span class="ml-3" id="annual-billing-label"
                                               @click="on = !on; $refs.switch.focus()">
-                                  <span class="text-sm font-medium text-gray-900">Every Month </span>
-                                </span>
-
+                                            <span class="text-sm font-medium text-gray-900">
+                                                Every Month
+                                            </span>
+                                        </span>
                                     </div>
                                 @endif
                             </div>

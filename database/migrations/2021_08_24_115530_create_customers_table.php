@@ -35,6 +35,7 @@ class CreateCustomersTable extends Migration
             $table->decimal('rec_otc_percentage')->nullable();
             $table->decimal('rec_mrc_percentage')->nullable();
             $table->string('rec_mrc_duration')->nullable();
+            $table->char('is_every_month')->nullable();
             $table->decimal('one_time_commission_percentage')->nullable();
             $table->softDeletes();
             $table->timestamps();
