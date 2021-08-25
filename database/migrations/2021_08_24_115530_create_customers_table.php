@@ -23,6 +23,8 @@ class CreateCustomersTable extends Migration
             $table->string('location');
             $table->text('remarks')->nullable();
             $table->string('current_status');
+            $table->date('starting_date');
+            $table->date('ending_date')->nullable();
             $table->text('status_reason')->nullable();
             $table->char('is_referred', 2)->nullable();
             $table->string('referral_name')->nullable();

@@ -50,6 +50,13 @@
                                    class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                            <label for="starting_date"
+                                   class="block text-sm font-medium text-gray-700">Starting Date</label>
+                            <input type="date" id="starting_date"
+                                   autocomplete="off" wire:model.defer="customer.starting_date"
+                                   class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                             <label for="location"
                                    class="block text-sm font-medium text-gray-700">Location</label>
                             <input type="text" id="location"
@@ -84,6 +91,14 @@
                         </div>
 
                         @if($customer['current_status'] == 'dropped')
+                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                                <label for="ending_date"
+                                       class="block text-sm font-medium text-gray-700">Ending Date</label>
+                                <input type="date" id="ending_date"
+                                       autocomplete="off" wire:model.defer="customer.ending_date"
+                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
                             <div class="col-span-6">
                                 <label for="reason"
                                        class="block text-sm font-medium text-gray-700">Reason for Dropping</label>
@@ -115,7 +130,7 @@
                                     </fieldset>
                                 </div>
 
-                                @if($customer['commission_type'] == 'recurring')
+                                @if($customer['commission_type'] == 'recurring' && $customer['is_referred'])
                                     <div class="flex items-center" x-data="{ on: @entangle('toggle_switch') }">
                                         <button type="button"
                                                 class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
