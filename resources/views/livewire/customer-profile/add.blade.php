@@ -84,12 +84,12 @@
                         </div>
 
                         @if($customer['current_status'] == 'dropped')
-                            <div class="col-span-6 sm:col-span-2 lg:col-span-2">
+                            <div class="col-span-6">
                                 <label for="reason"
                                        class="block text-sm font-medium text-gray-700">Reason for Dropping</label>
-                                <input type="text" id="reason"
-                                       autocomplete="off" wire:model.defer="customer.status_reason"
-                                       class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <textarea type="text" id="reason"
+                                          autocomplete="off" wire:model.defer="customer.status_reason"
+                                          class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                             </div>
                         @endif
 
@@ -185,20 +185,12 @@
 
                                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label for="mrc_duration" class="block text-sm font-medium text-gray-700">MRC
-                                        Duration</label>
+                                        Duration (Months)</label>
                                     <div class="mt-1 relative rounded-md shadow-sm ">
-                                        <input type="text" id="mrc_duration"
+                                        <input type="number" id="mrc_duration"
+                                               wire:model.defer="customer.rec_mrc_duration"
                                                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full  pr-12 sm:text-sm border-gray-300 rounded-md"
-                                               placeholder="">
-                                        <div class="absolute inset-y-0 right-0 flex items-center">
-                                            <label for="mrc_type" class="sr-only">Type</label>
-                                            <select id="mrc_type"
-                                                    class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
-                                                <option value="day">Day</option>
-                                                <option value="week">Week</option>
-                                                <option value="month">Month</option>
-                                            </select>
-                                        </div>
+                                               autocomplete="off">
                                     </div>
                                 </div>
 
