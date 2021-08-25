@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Add extends Component
 {
-    public $toggle_switch = false;
+    public $toggle_switch;
 
     public $customer = [
         'is_referred' => false,
@@ -64,7 +64,6 @@ class Add extends Component
         'customer.is_every_month' => 'nullable',
         'customer.rec_otc_percentage' => 'required_if:customer.commission_type,recurring',
         'customer.rec_mrc_percentage' => 'required_if:customer.commission_type,recurring',
-        'customer.rec_mrc_duration' => 'required_if:customer.commission_type,recurring|required_if:customer.is_every_month,false',
         'customer.referral_name' => 'nullable',
         'customer.referral_contact' => 'nullable|numeric',
         'customer.referral_details' => 'nullable',
@@ -73,9 +72,11 @@ class Add extends Component
 
     public function save()
     {
+        $this->customer['is_every_month'] = $this->toggle_switch;
         $this->validate();
         $response = Customer::create($this->customer);
         !$response ? session()->flash('error', 'Unknown Error Occurred! Customer not added.') : session()->flash('success', 'Customer Added Successfully.');
         $this->reset('customer');
     }
+
 }

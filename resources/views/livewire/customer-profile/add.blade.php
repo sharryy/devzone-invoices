@@ -82,7 +82,7 @@
                                 <label for="Location" class="block text-sm font-medium text-gray-700">Status</label>
                                 <select id="Location" wire:model.lazy="customer.current_status"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                    <option selected>--Choose--</option>
+                                    <option>--Choose--</option>
                                     <option value="in-process">Talk in Process</option>
                                     <option value="on-board">On-board</option>
                                     <option value="dropped">Dropped</option>
@@ -132,7 +132,7 @@
 
                                 @if($customer['commission_type'] == 'recurring' && $customer['is_referred'])
                                     <div class="flex items-center" x-data="{ on: @entangle('toggle_switch') }">
-                                        <button type="button" wire:model.lazy="customer.is_every_month"
+                                        <button type="button"
                                                 class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                 role="switch" aria-checked="false" x-ref="switch" x-state:on="Enabled"
                                                 x-state:off="Not Enabled"
