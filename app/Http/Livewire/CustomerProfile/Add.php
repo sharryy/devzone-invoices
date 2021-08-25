@@ -18,12 +18,6 @@ class Add extends Component
         'commission_type' => ''
     ];
 
-    public $referral_array = [
-        'referral_name', 'referral_contact', 'referral_details', 'referral_address',
-        'commission_type', 'rec_otc_percentage', 'rec_mrc_percentage', 'rec_mrc_duration',
-        'one_time_commission_percentage'
-    ];
-
     public function render()
     {
         return view('livewire.customer-profile.add');
@@ -80,17 +74,22 @@ class Add extends Component
 
     public function save()
     {
-        if ($this->customer['is_referred']) $this->customer['is_every_month'] = $this->toggle_switch;
         $this->validate();
-        if ($this->customer['is_every_month'] == true && $this->customer['is_referred']) $this->customer['rec_mrc_duration'] = '';
-        $response = Customer::create($this->customer);
+        $customer_details = $this->customer + $this->customer_referral;
+        if ($customer_details['is_referred']) $customer_details['is_every_month'] = $this->toggle_switch;
+        if ($customer_details['is_referred'] && $customer_details['is_every_month']) $customer_details['rec_mrc_duration'] = '';
+        $response = Customer::create($customer_details);
         !$response ? session()->flash('error', 'Unknown Error Occurred! Customer not added.') : session()->flash('success', 'Customer Added Successfully.');
-        $this->reset('customer');
+        $this->reset('customer', 'customer_referral');
     }
 
     public function updatedCustomerIsReferred($value)
     {
-        if (!$value)
-            $this->reset('customer_referral');
+        if (!$value) $this->reset('customer_referral');
+    }
+
+    public function updatedCustomerCurrentStatus($value)
+    {
+        if (!strcmp($value, 'dropped')) unset($this->customer['ending_date'], $this->customer['status_reason']);
     }
 }
